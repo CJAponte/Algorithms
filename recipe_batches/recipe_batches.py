@@ -3,7 +3,22 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  batches = 0
+  if len(recipe) != len(ingredients):
+      return batches
+
+  for key in recipe:
+      if batches > 1 and ingredients[key]/recipe[key] > batches:
+          break
+
+      if recipe[key] <= ingredients[key]:
+          batches = ingredients[key]/recipe[key]
+
+      if recipe[key] > ingredients[key]:
+          print("We're in 2", key)
+          return 0
+
+  return round(batches)
 
 
 if __name__ == '__main__':
